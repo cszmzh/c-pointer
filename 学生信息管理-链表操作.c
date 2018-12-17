@@ -5,7 +5,7 @@
 #include <time.h> 
 #define LEN sizeof(struct Student)
 /* 
-	author-BA_NANA ���������ѧ 
+	author-BA_NANA 天津理工大学 
 */ 
  struct Student{
  	long int id;
@@ -16,7 +16,7 @@
  };
  int n;
  
- struct Student *creat() //��ʼ��ѧ������ 
+ struct Student *creat() //初始化学生链表 
  {
  	struct Student *head;
  	struct Student *p1,*p2;
@@ -39,17 +39,17 @@
 		}
 	}
 	p2->next=NULL;
-	printf("��ʼ����ɣ�\n"); 
+	printf("初始化完成！\n"); 
 	return head;
  } 
  
- void showALL(struct Student*head) //�����ǰ����ͬѧ��Ϣ
+ void showALL(struct Student*head) //输出当前所有同学信息
  {
  	struct Student*p;
  	p = head;
  	
  	if(p!=NULL){
- 		printf("������%d��ѧ������Ϣ����\n",n-1);
+ 		printf("现在有%d名学生，信息如下\n",n-1);
  		
 		 while(p!=NULL){
  			printf("%ld %s %s %d\n",p->id,p->name,p->sex,p->age);
@@ -57,18 +57,18 @@
 		 }
 	 }
 	 else{
-	 	printf("����Ϊ��\n");
+	 	printf("数据为空\n");
 	 } 
 	 
   } 
   
-int clearStudentLink(struct Student *head) //��յ�ǰ���� 
+int clearStudentLink(struct Student *head) //清空当前链表 
   {
   	struct Student*p;
   	struct student*q;
   
   	p=head->next;
-  	printf("���������ǰ����...\n");
+  	printf("正在清除当前链表...\n");
   	if(p==NULL){
   		return -1;
 	  }
@@ -78,32 +78,32 @@ int clearStudentLink(struct Student *head) //��յ�ǰ����
 		p=q;
 		n--;
 	}
-	//if(p!=NULL){        //������һ���ڵ� 
+	//if(p!=NULL){        //清空最后一个节点 
 	//	free(p);
 	//	free(tem);
 	//} 
 	head->next=NULL;
 	head=NULL;
-	printf("������!\n");
+	printf("清空完成!\n");
 }
 
-int isExist(struct Student*head,long int id) //�ж�ѧ����Ϣ�Ƿ���� 
+int isExist(struct Student*head,long int id) //判断学生信息是否存在 
 {
 	struct Student*p;
 	p = head;
 	long int num = id;
 	while(p!=NULL){
 		if(p->id==num){
-			printf("�ҵ���!\n");
+			printf("找到了!\n");
 			return 0;
 		}
 		p=p->next;
 	}
-	printf("û�ҵ�...\n");
+	printf("没找到...\n");
 	return 0; 
 }
 
-//������ͬѧ��Ϣ������β�� 
+//添加新同学信息到链表尾端 
 void Add(struct Student *head,long int id,char name[],char sex[],int age)
 {
 	struct Student*p;
@@ -127,10 +127,10 @@ void Add(struct Student *head,long int id,char name[],char sex[],int age)
 		}
 		p=p->next;
 	}
-	printf("�������!\n"); 
+	printf("添加完成!\n"); 
 }
 
-//�޸�ѧ����Ϣ 
+//修改学生信息 
 void Modify(struct Student *head,long int id,char name[],char sex[],int age)
 {
 	struct Student*p;
@@ -145,17 +145,17 @@ void Modify(struct Student *head,long int id,char name[],char sex[],int age)
 		}
 		p=p->next;
 	}
-	printf("�޸����!\n");
+	printf("修改完成!\n");
 }
 
-//ɾ��ѧ����Ϣ 
+//删除学生信息 
 struct Student* Delete(struct Student*head,long int id)
 {
 	struct Student*pb;
 	struct Student*pf;
 	pb=head;
 	if(head==NULL){
-		printf("����Ϊ�գ�\n");
+		printf("链表为空！\n");
 		return ; 
 	} 
 	
@@ -168,33 +168,33 @@ struct Student* Delete(struct Student*head,long int id)
 		if(pb==head){
 			head=head->next;
 			n--;
-			printf("ɾ��%ldѧ�����!\n",id);
+			printf("删除%ld学生完成!\n",id);
 		} 
 	
 		else
 		{
 			pf->next=pb->next;
 			n--;
-			printf("ɾ��%ldѧ�����!\n",id);
+			printf("删除%ld学生完成!\n",id);
 		}
 		free(pb);
 		return head;
 	}
-	else printf("û�ҵ���ѧ��...\n"); 
+	else printf("没找到该学生...\n"); 
 }
 
-//�����ʾ��ͬѧ��Ϣ 
+//输出显示该同学信息 
 void Search(struct Student*head,long int id)
 {
 	struct Student*p;
 	p=head;
 	while(1){
 		if(p->id == id){
-			printf("��ѧ����ϢΪ ѧ��:%ld ����:%s �Ա�:%s ����%d\n",p->id,p->name,p->sex,p->age);
+			printf("该学生信息为 学号:%ld 姓名:%s 性别:%s 年龄%d\n",p->id,p->name,p->sex,p->age);
 			break;
 		}
 		if(p==NULL){
-			printf("û�и�ѧ��������������\n"); 
+			printf("没有该学生，请重新输入\n"); 
 			break;
 		}
 		p=p->next;	
@@ -205,9 +205,9 @@ void start()
 {
 	system("color FD"); 
 	
-	printf("��ӭ����ʷ����ǿ���BA_NANAѧ������ϵͳV1.0������������ѡ����Ҫ���еĲ���\n"
-	"1.ѧ����Ϣ��ʼ��(����)\n2.�ж�ѧ����Ϣ�Ƿ����\n3.������ͬѧ����β\n4.�޸�ѧ����Ϣ\n"
-	"5.ɾ��ĳ��ͬѧ��Ϣ\n6.��ʾĳ��ͬѧ��Ϣ\n7.�������ͬѧ��Ϣ\n8.�������\n9.�����Ļ\n10.�˳�����\n"); 
+	printf("欢迎来到史上最强大的BA_NANA学生管理系统V1.0，请输入数字选择你要进行的操作\n"
+	"1.学生信息初始化(链表)\n2.判断学生信息是否存在\n3.添加新同学至表尾\n4.修改学生信息\n"
+	"5.删除某个同学信息\n6.显示某个同学信息\n7.输出所有同学信息\n8.清空链表\n9.清空屏幕\n10.退出程序\n"); 
 	struct Student *head;
 	head = NULL;
 	int num,age,ret; 
@@ -216,31 +216,31 @@ void start()
 	
 	while(scanf("%d",&num)!=EOF){
 		if(num==1) {
-			printf("����������ѧ��id ���� �Ա� ������������Ϣ,idΪ0ʱ����\n");
+			printf("请依次输入学生id 名字 性别 年龄以添加信息,id为0时结束\n");
 			head=creat();
 		}
 		if(num==2){
-			printf("������ѧ��id������һ������\n");
+			printf("请输入学生id进行下一步操作\n");
 			scanf("%ld",&id);
 			isExist(head,id);
 		}
 		if(num==3){
-			printf("������ѧ��id ���� �Ա� ������������Ϣ����β\n");
+			printf("请输入学生id 名字 性别 年龄以添加信息至表尾\n");
 			scanf("%ld %s %s %d",&id,&name,&sex,&age); 
 			Add(head,id,name,sex,age);
 		}
 		if(num==4){
-			printf("������ѧ��id Ҫ�޸ĵ����� Ҫ�޸ĵ��Ա� Ҫ�޸ĵ�����\n");
+			printf("请输入学生id 要修改的名字 要修改的性别 要修改的年龄\n");
 			scanf("%ld %s %s %d",&id,&name,&sex,&age); 
 			Modify(head,id,name,sex,age);
 		}
 		if(num==5){
-			printf("������Ҫɾ����ѧ��id\n");
+			printf("请输入要删除的学生id\n");
 			scanf("%ld",&id);
 			head=Delete(head,id);
 		}
 		if(num==6){
-			printf("������Ҫ��ʾ��Ϣ��ѧ��id\n");
+			printf("请输入要显示信息的学生id\n");
 			scanf("%ld",&id);
 			Search(head,id);
 		}
@@ -252,14 +252,14 @@ void start()
 		}
 		if(num==9){
 			system("cls");
-			printf("��ӭ����ʷ����ǿ���BA_NANAѧ������ϵͳV1.0������������ѡ����Ҫ���еĲ���\n"
-	"1.ѧ����Ϣ��ʼ��(����)\n2.�ж�ѧ����Ϣ�Ƿ����\n3.������ͬѧ����β\n4.�޸�ѧ����Ϣ\n"
-	"5.ɾ��ĳ��ͬѧ��Ϣ\n6.��ʾĳ��ͬѧ��Ϣ\n7.�������ͬѧ��Ϣ\n8.�������\n9.�����Ļ\n10.�˳�����\n"); 
+			printf("欢迎来到史上最强大的BA_NANA学生管理系统V1.0，请输入数字选择你要进行的操作\n"
+	"1.学生信息初始化(链表)\n2.判断学生信息是否存在\n3.添加新同学至表尾\n4.修改学生信息\n"
+	"5.删除某个同学信息\n6.显示某个同学信息\n7.输出所有同学信息\n8.清空链表\n9.清空屏幕\n10.退出程序\n"); 
 		}
 		if(num==10){
 			break;
 		}
-		printf("----------------��������һ�β���ָ��------------------\n") ; 
+		printf("----------------请输入下一次操作指令------------------\n") ; 
 	}
 }
 
